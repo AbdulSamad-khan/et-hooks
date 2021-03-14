@@ -18,7 +18,18 @@ const App = () => {
         label="Income"
         buttonValue="submit Income"
       />
-      <Listing amount={income} label="Income List" />
+      <Listing
+        amount={income}
+        label="Income List"
+        onChangeIncome={(index) => {
+          setIncome(
+            income.filter((e, id) => {
+              return id != index;
+            })
+          );
+        }}
+        name="income"
+      />
 
       <Transaction
         amount={expense}
@@ -29,7 +40,23 @@ const App = () => {
         label="Expense"
         buttonValue="submit expense"
       />
-      <Listing amount={expense} label="Expense List" />
+      {/* <Listing
+        amount={expense}
+        label="Expense List"
+        onChangeExpense={setExpense}
+      /> */}
+      <Listing
+        amount={expense}
+        label="Expense List"
+        onChangeExpense={(index) => {
+          setExpense(
+            expense.filter((e, id) => {
+              return id != index;
+            })
+          );
+        }}
+        name="expense"
+      />
     </div>
   );
 };
